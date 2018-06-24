@@ -1,8 +1,66 @@
 <!DOCTYPE html>
 <html ng-app="locateEasy">
-<head>
+
+     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Collapsible sidebar using Bootstrap 4</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    	<!-- libs -->
+	<script src="js/lib/paper-full.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	
+	<!-- application -->
+	<script src="js/angular/app.js"></script>
+	<script src="js/data.js"></script>
+	<script src="js/pathfinder.js"></script>
+
+
 </head>
 <body ng-controller="LandingController">
+<div class="wrapper">
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Locate Easy</h3>
+        </div>
+        <div class="input-group mb-3">
+  		<div class="input-group-prepend">
+    		<span class="input-group-text" id="basic-addon1">From</span>
+  		</div>
+  			<input type="text" class="form-control" placeholder="start" aria-label="start" aria-describedby="basic-addon1">
+		</div>
+		<div class="input-group mb-3">
+  		<div class="input-group-prepend">
+    		<span class="input-group-text" id="basic-addon1">To   </span>
+  		</div>
+  			<input type="text" class="form-control" placeholder="end" aria-label="end" aria-describedby="basic-addon1">
+		</div>
+	</nav>
+<div id="content">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button type="button" id="sidebarCollapse" class="btn btn-info">
+                <i id="collapseIcon" class="fas fa-caret-right"></i>
+            </button>
+        </div>
+    </nav>
 	<select ng-model="startPoint">
 	    <option value="R1">R1</option>
    		<option value="R2">R2</option>
@@ -103,14 +161,16 @@
   	<button ng-click="showPath(startPoint, endPoint)">Show Path</button>
 
 	<canvas id="myCanvas" resize map style="width: 100vw; height: 100vh;"></canvas>
-	
-	<!-- libs -->
-	<script src="js/lib/paper-full.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-	
-	<!-- application -->
-	<script src="js/angular/app.js"></script>
-	<script src="js/data.js"></script>
-	<script src="js/pathfinder.js"></script>
+</div>
+
+</div>	
 </body>
+<script>
+	$(document).ready(function () {
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+               	 
+    });
+    });
+</script>
 </html>
