@@ -3,16 +3,27 @@
 */
 
 .wrapper {
-    display: flex;
-    width: 100%;
-    align-items: stretch;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
+	min-width: 250px;
+	max-width: 250px;
 }
 
 #sidebar.active {
-    margin-left: -250px;
+	margin-left: -250px;
+}
+
+.logo-icon {
+	height: 30px;
+}
+
+.logo-header {
+	display: inline-block;
+	padding: 5px 5px 5px 15px;
+	vertical-align: middle;
+	color: #e9e9e9;
 }
