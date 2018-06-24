@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="locateEasy">
 <head>
 </head>
-<body>
-	<select id="ddStart">
+<body ng-controller="LandingController">
+	<select ng-model="startPoint">
 	    <option value="R1">R1</option>
    		<option value="R2">R2</option>
 	    <option value="R3">R3</option>
@@ -52,7 +52,7 @@
 	    <option value="D43">D43</option>
 	</select>
 
-  	<select id="ddEnd">
+  	<select ng-model="endPoint">
 	    <option value="R1">R1</option>
 	    <option value="R2">R2</option>
 	    <option value="R3">R3</option>
@@ -100,13 +100,17 @@
 	    <option value="D42">D42</option>
 	    <option value="D43">D43</option>
   	</select>
-  <button id="btnShowPath" onclick="showPath(document.getElementById('ddStart').value, document.getElementById('ddEnd').value)">Show Path</button>
+  	<button ng-click="showPath(startPoint, endPoint)">Show Path</button>
 
-	<canvas id="myCanvas" resize style="width: 100vw; height: 100vh;"></canvas>
+	<canvas id="myCanvas" resize map style="width: 100vw; height: 100vh;"></canvas>
 	
-	<script type="text/javascript" src="js/lib/paper-full.min.js"></script>
-	<script type="text/javascript" src="js/data.js"></script>
-	<script type="text/javascript" src="js/pathfinder.js"></script>
-	<script type="text/paperscript" src="js/setup.js" canvas="myCanvas"></script>
+	<!-- libs -->
+	<script src="js/lib/paper-full.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	
+	<!-- application -->
+	<script src="js/angular/app.js"></script>
+	<script src="js/data.js"></script>
+	<script src="js/pathfinder.js"></script>
 </body>
 </html>
