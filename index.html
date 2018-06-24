@@ -13,9 +13,9 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body ng-controller="LandingController">
-  <div class="wrapper">
-      <nav id="sidebar" class="container-fluid" ng-class="{active: isSidebarActive}">
-        <div>
+  <div class="wrapper" ng-init="hideSidebar = false">
+      <nav id="sidebar" class="container-fluid" ng-class="{active: hideSidebar}">
+        <div style="margin: 10px 0">
             <img class="logo-icon" src="../image/logo.svg"><h3 class="logo-header">Locate Easy</h3>
         </div>
         <div class="input-group mb-3">
@@ -31,17 +31,13 @@
           <input type="text" class="form-control" placeholder="end" aria-label="end" aria-describedby="basic-addon1">
       </div>
     </nav>
-    
-    
 
     <div id="content">
     <nav class="navbar-toggle">
-      <div ng-init="isSidebarActive = true">
-          <button type="button" id="sidebarCollapse" class="btn btn-info" ng-click="isSidebarActive=!isSidebarActive">
-              <span ng-if="isSidebarActive" ><i class="fas fa-caret-right"></i></span>
-              <span ng-if="!isSidebarActive"><i class="fas fa-caret-left"></i></span>
-          </button>
-      </div>
+      <button type="button" class="btn btn-info" ng-click="hideSidebar=!hideSidebar">
+        <span ng-if="hideSidebar" ><i class="fas fa-caret-right"></i></span>
+        <span ng-if="!hideSidebar"><i class="fas fa-caret-left"></i></span>
+      </button>
     </nav>
     <select ng-model="startPoint">
         <option value="R1">R1</option>
