@@ -44,3 +44,21 @@
 	background-color: #484B4E
 	border-color: #484B4E;
 }
+
+md-autocomplete#custom-template {
+  width: 200px;
+}
+.autocomplete-custom-template li {
+  border-bottom: 1px solid #ccc;
+  height: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  white-space: normal;
+}
+.autocomplete-custom-template li:last-child {
+  border-bottom-width: 0;
+}
+.autocomplete-custom-template .item-title {
+  display: block;
+  line-height: 2;
+}

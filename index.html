@@ -18,6 +18,21 @@
         <div style="margin: 10px 0">
             <img class="logo-icon" src="../image/logo.svg"><h3 class="logo-header">Locate Easy</h3>
         </div>
+         <div ng-controller="AutoCompleteController as ctrl" layout="column" >
+            <md-content layout-padding="" layout="column">
+                <md-autocomplete id="custom-template" ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.name" md-min-length="0" placeholder="Enter the start location" md-menu-class="autocomplete-custom-template" md-menu-container-class="custom-container">
+                <md-item-template>
+                  <span class="item-title" md-highlight-text="searchText">
+                    <span> {{item.name}} </span>
+                  </span>
+                </md-item-template>
+                 <md-not-found>
+                  No employee found for "{{ searchText }}".
+                </md-not-found>
+              </md-autocomplete>
+          </md-content>
+        </div>
+  
         <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1">From</span>
@@ -161,6 +176,7 @@
   
   <!-- application -->
   <script src="js/angular/app.js"></script>
+  <script src="js/autocompletecontroller.js"></script>
   <script src="js/data.js"></script>
   <script src="js/pathfinder.js"></script>
 
