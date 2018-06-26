@@ -1,61 +1,131 @@
+
 <!DOCTYPE html>
+
+
 <html ng-app="locateEasy">
+
+
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <meta http-equiv="X-UA-Compatible"
+    content="IE=edge">
 
   <title>Locate Easy</title>
-
   <!-- Bootstrap CSS CDN -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+    integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
   <!-- Our Custom CSS -->
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet"
+    href="../css/style.css">
+
 </head>
+
 <body ng-controller="LandingController">
+
   <div class="wrapper" ng-init="hideSidebar = false">
-      <nav id="sidebar" class="container-fluid" ng-class="{active: hideSidebar}">
-        <div style="margin: 10px 0">
-            <img class="logo-icon" src="../image/logo.svg"><h3 class="logo-header">Locate Easy</h3>
-        </div>
-         <div ng-controller="AutoCompleteController as ctrl" layout="column" >
-            <md-content layout-padding="" layout="column">
-                <md-autocomplete id="custom-template" ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.name" md-min-length="0" placeholder="Enter the start location" md-menu-class="autocomplete-custom-template" md-menu-container-class="custom-container">
-                <md-item-template>
-                  <span class="item-title" md-highlight-text="searchText">
-                    <span> {{item.name}} </span>
-                  </span>
-                </md-item-template>
-                 <md-not-found>
-                  No employee found for "{{ searchText }}".
-                </md-not-found>
-              </md-autocomplete>
-          </md-content>
-        </div>
-  
-        <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">From</span>
-        </div>
-          <input type="text" class="form-control" placeholder="start" aria-label="start" aria-describedby="basic-addon1">
+
+    <nav id="sidebar"
+      class="container-fluid"
+      ng-class="{active: hideSidebar}">
+
+      <div style="margin: 10px 0">
+        <img class="logo-icon"
+          src="../image/logo.svg">
+
+        <h3 class="logo-header">Locate Easy</h3>
       </div>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">To   </span>
-        </div>
-          <input type="text" class="form-control" placeholder="end" aria-label="end" aria-describedby="basic-addon1">
+
+      <div ng-controller="AutoCompleteController as ctrl"
+        layout="column">
+
+        <md-content layout-padding
+          layout="column">
+
+          <md-autocomplete id="custom-template"
+            ng-disabled="ctrl.isDisabled"
+            md-no-cache="ctrl.noCache"
+            md-selected-item="ctrl.selectedItem"
+            md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+            md-search-text="ctrl.searchText"
+            md-selected-item-change="ctrl.selectedItemChange(item)"
+            md-items="item in ctrl.querySearch(ctrl.searchText)"
+            md-item-text="item.name"
+            md-min-length="0"
+            placeholder="Enter the start location"
+            md-menu-class="autocomplete-custom-template"
+            md-menu-container-class="custom-container">
+
+            <md-item-template>
+
+              <span class="item-title"
+                md-highlight-text="searchText">
+                <span>{{item.name}}</span>
+              </span>
+            </md-item-template>
+
+            <md-not-found>No employee found for "{{ searchText }}".
+            </md-not-found>
+          </md-autocomplete>
+        </md-content>
       </div>
-      <ec-time distance="distance"></ec-time>
+
+      <div class="row">
+        <div class="col-sm-2" style="color:white">
+          <i style="font-size: 12px; padding-top: 10px; padding-left: 4px;" class="far fa-circle"></i>
+          <img src="/image/dots_v.svg" style="height: 37px; padding-left: 7px; position: absolute;">
+        </div>
+        <div class="col-sm-10 input-group mb-3">
+          <input type="text"
+            class="form-control"
+            placeholder="SID, Desk Number or Room Name"
+            aria-label="SID, Desk Number or Room Name"
+            aria-describedby="basic-addon1"
+            title="SID, Desk Number or Room Name">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-2" style="color:white"><i style="padding-top: 12px; padding-left: 3px;" class="fas fa-map-marker-alt"></i></div>
+        <div class="col-sm-10 input-group mb-3">
+          <input type="text"
+            class="form-control"
+            placeholder="SID, Desk Number or Room Name"
+            aria-label="SID, Desk Number or Room Name"
+            aria-describedby="basic-addon1"
+            title="SID, Desk Number or Room Name">
+        </div>
+      </div>
+
+      <ec-time distance="distance" />
+
     </nav>
 
     <div id="content">
-    <nav class="navbar-toggle">
-      <button type="button" class="btn btn-info" ng-click="hideSidebar=!hideSidebar">
-        <span ng-if="hideSidebar" ><i class="fas fa-caret-right"></i></span>
-        <span ng-if="!hideSidebar"><i class="fas fa-caret-left"></i></span>
-      </button>
-    </nav>
-    <select ng-model="startPoint">
+
+      <nav class="navbar-toggle">
+
+        <button type="button"
+          class="btn btn-info"
+          ng-click="hideSidebar=!hideSidebar">
+          <span>
+            <i ng-if="hideSidebar" class="fas fa-caret-right"></i>
+          </span>
+          <span >
+            <i ng-if="!hideSidebar" class="fas fa-caret-left"></i>
+
+          </span>
+        </button>
+      </nav>
+
+      <select ng-model="startPoint">
         <option value="R1">R1</option>
         <option value="R2">R2</option>
         <option value="R3">R3</option>
@@ -102,7 +172,7 @@
         <option value="D41">D41</option>
         <option value="D42">D42</option>
         <option value="D43">D43</option>
-    </select>
+      </select>
 
       <select ng-model="endPoint">
         <option value="R1">R1</option>
@@ -153,36 +223,40 @@
         <option value="D43">D43</option>
       </select>
       <button ng-click="findPath(startPoint, endPoint)">Find Path</button>
+      <canvas id="myCanvas"
+        resize
+        el-map
+        style="width: 100vw; height: 100vh;" />
 
-    <canvas id="myCanvas" resize el-map style="width: 100vw; height: 100vh;"></canvas>
+    </div>
   </div>
-
-</div>
-
-
-  <!-- Font Awesome JS -->
-  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-
-
-  <!-- jQuery CDN - Slim version (=without AJAX) -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <!-- Popper.JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+    integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+    crossorigin="anonymous"></script>
+
   <!-- Bootstrap JS -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+    integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+    crossorigin="anonymous"></script>
+
   <!-- libs -->
   <script src="js/lib/paper-full.min.js"></script>
+
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-  
+
   <!-- application -->
   <script src="js/angular/app.js"></script>
-  <script src="js/angular/elTimeDirective/elTime.js"></script>
-  <script src="js/angular/elMapDirective/elMap.js"></script>
-  <script src="js/autocompletecontroller.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/pathfinder.js"></script>
 
+  <script src="js/angular/elTimeDirective/elTime.js"></script>
+
+  <script src="js/angular/elMapDirective/elMap.js"></script>
+
+  <script src="js/autocompletecontroller.js"></script>
+
+  <script src="js/data.js"></script>
+
+  <script src="js/pathfinder.js"></script>
 
 </body>
 </html>
