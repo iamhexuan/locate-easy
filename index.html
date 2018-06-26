@@ -81,7 +81,7 @@
            <md-content layout="column">
           <md-autocomplete id="custom-template-end"
             md-no-cache="noCache"
-            md-selected-item="selectedItem"
+            md-selected-item="selectedItem_end"
             md-search-text-change="searchTextChange(searchText_end)"
             md-search-text="searchText_end"
             md-selected-item-change="selectedItemChange(item)"
@@ -220,7 +220,7 @@
         <option value="D42">D42</option>
         <option value="D43">D43</option>
       </select>
-      <button ng-click="findPath(startPoint, endPoint)">Find Path</button>
+      <button ng-click="findPath(selectedItem_start.locationId, selectedItem_end.locationId)">Find Path</button>
       <canvas id="myCanvas"
         resize
         el-map
