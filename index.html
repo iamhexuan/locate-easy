@@ -21,6 +21,7 @@
     integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
     crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
 
   <!-- Our Custom CSS -->
   <link rel="stylesheet"
@@ -42,66 +43,65 @@
 
         <h3 class="logo-header">Locate Easy</h3>
       </div>
-
-      <div ng-controller="AutoCompleteController as ctrl"
-        layout="column">
-
-        <md-content layout-padding
-          layout="column">
-
-          <md-autocomplete id="custom-template"
-            ng-disabled="ctrl.isDisabled"
-            md-no-cache="ctrl.noCache"
-            md-selected-item="ctrl.selectedItem"
-            md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-            md-search-text="ctrl.searchText"
-            md-selected-item-change="ctrl.selectedItemChange(item)"
-            md-items="item in ctrl.querySearch(ctrl.searchText)"
-            md-item-text="item.name"
-            md-min-length="0"
-            placeholder="Enter the start location"
-            md-menu-class="autocomplete-custom-template"
-            md-menu-container-class="custom-container">
-
-            <md-item-template>
-
-              <span class="item-title"
-                md-highlight-text="searchText">
-                <span>{{item.name}}</span>
-              </span>
-            </md-item-template>
-
-            <md-not-found>No employee found for "{{ searchText }}".
-            </md-not-found>
-          </md-autocomplete>
-        </md-content>
-      </div>
-
       <div class="row">
         <div class="col-sm-2" style="color:white">
           <i style="font-size: 12px; padding-top: 10px; padding-left: 4px;" class="far fa-circle"></i>
           <img src="/image/dots_v.svg" style="height: 37px; padding-left: 7px; position: absolute;">
         </div>
         <div class="col-sm-10 input-group mb-3">
-          <input type="text"
-            class="form-control"
-            placeholder="SID, Desk Number or Room Name"
-            aria-label="SID, Desk Number or Room Name"
-            aria-describedby="basic-addon1"
-            title="SID, Desk Number or Room Name">
+           <md-content layout="column">
+          <md-autocomplete id="custom-template-start"
+            ng-disabled="isDisabled"
+            md-no-cache="noCache"
+            md-selected-item="selectedItem_start"
+            md-search-text-change="searchTextChange(searchText_start)"
+            md-search-text="searchText_start"
+            md-selected-item-change="selectedItemChange(item)"
+            md-items="item in querySearch(searchText_start)"
+            md-item-text="item.name"
+            md-min-length="0"
+            placeholder="Enter the starting location"
+            md-menu-class="autocomplete-custom-template">
+            <md-item-template>
+              <span class="item-title"
+                md-highlight-text="searchText_start">
+                  {{item.name}}
+              </span>
+            </md-item-template>
+
+            <md-not-found>No employee found for "{{ searchText_start }}".
+            </md-not-found>
+          </md-autocomplete>
+        </md-content>
         </div>
       </div>
 
       <div class="row">
         <div class="col-sm-2" style="color:white"><i style="padding-top: 12px; padding-left: 3px;" class="fas fa-map-marker-alt"></i></div>
         <div class="col-sm-10 input-group mb-3">
-          <input type="text"
-            class="form-control"
-            placeholder="SID, Desk Number or Room Name"
-            aria-label="SID, Desk Number or Room Name"
-            aria-describedby="basic-addon1"
-            title="SID, Desk Number or Room Name">
-        </div>
+           <md-content layout="column">
+          <md-autocomplete id="custom-template-end"
+            ng-disabled="isDisabled"
+            md-no-cache="noCache"
+            md-selected-item="selectedItem"
+            md-search-text-change="searchTextChange(searchText_end)"
+            md-search-text="searchText_end"
+            md-selected-item-change="selectedItemChange(item)"
+            md-items="item in querySearch(searchText_end)"
+            md-item-text="item.name"
+            md-min-length="0"
+            placeholder="Locate your collegue"
+            md-menu-class="autocomplete-custom-template">
+            <md-item-template>
+              <span class="item-title"
+                md-highlight-text="searchText_end">
+                  {{item.name}}
+              </span>
+            </md-item-template>
+            <md-not-found>No employee found for "{{searchText_end}}".
+            </md-not-found>
+          </md-autocomplete>
+        </md-content>
       </div>
 
       <ec-time distance="distance" />
@@ -243,7 +243,13 @@
   <!-- libs -->
   <script src="js/lib/paper-full.min.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+   
+  <!-- Angular Material Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
 
   <!-- application -->
   <script src="js/angular/app.js"></script>

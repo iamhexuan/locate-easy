@@ -46,7 +46,7 @@
 }
 
 md-autocomplete#custom-template {
-  width: 200px;
+  width: 220px;
 }
 .autocomplete-custom-template li {
   border-bottom: 1px solid #ccc;
@@ -62,3 +62,4 @@ md-autocomplete#custom-template {
   display: block;
   line-height: 2;
 }
+
