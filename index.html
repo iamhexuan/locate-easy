@@ -45,6 +45,7 @@
         </div>
           <input type="text" class="form-control" placeholder="end" aria-label="end" aria-describedby="basic-addon1">
       </div>
+      <ec-time distance="distance"></ec-time>
     </nav>
 
     <div id="content">
@@ -151,9 +152,9 @@
         <option value="D42">D42</option>
         <option value="D43">D43</option>
       </select>
-      <button ng-click="showPath(startPoint, endPoint)">Show Path</button>
+      <button ng-click="findPath(startPoint, endPoint)">Find Path</button>
 
-    <canvas id="myCanvas" resize map style="width: 100vw; height: 100vh;"></canvas>
+    <canvas id="myCanvas" resize el-map style="width: 100vw; height: 100vh;"></canvas>
   </div>
 
 </div>
@@ -176,6 +177,8 @@
   
   <!-- application -->
   <script src="js/angular/app.js"></script>
+  <script src="js/angular/elTimeDirective/elTime.js"></script>
+  <script src="js/angular/elMapDirective/elMap.js"></script>
   <script src="js/autocompletecontroller.js"></script>
   <script src="js/data.js"></script>
   <script src="js/pathfinder.js"></script>
