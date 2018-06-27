@@ -31,9 +31,6 @@ app.controller("LandingController", [
         return value;
     }
     
-
-
-
     function querySearch(query) {
       var results = query
           ? $scope.repos.filter(createFilterFor(query))
@@ -47,7 +44,10 @@ app.controller("LandingController", [
     }
 
     function selectedItemChange(item) {
-      console.log("Item changed to " + JSON.stringify(item));
+      if($scope.selectedItem_end && $scope.selectedItem_start && $scope.selectedItem_start.locationId && $scope.selectedItem_end.locationId) {
+        findPath($scope.selectedItem_start.locationId, $scope.selectedItem_end.locationId);
+      }
+     // console.log("Item changed to " + JSON.stringify(item));
     }
 
     function createFilterFor(query) {
@@ -64,7 +64,7 @@ app.controller("LandingController", [
       var repos = locationToIdMap;
       return repos.map(function(repo) {
         if(repo.name) {
-          repo.value = repo.value + repo.name.toLowerCase();
+          repo.value = repo.name.toLowerCase();
         }
 
         if(repo.sid) {
