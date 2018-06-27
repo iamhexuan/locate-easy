@@ -41,7 +41,7 @@ app.controller("LandingController", [
       var lowercaseQuery = angular.lowercase(query);
 
       return function filterFn(item) {
-        return item.value.indexOf(lowercaseQuery) === 0;
+        return item.value.includes(lowercaseQuery);
       };
     }
 
@@ -55,56 +55,23 @@ app.controller("LandingController", [
         D4: "UID4444"
       };
 
-      var locationInfo = [
-        {
-          name: "He Xuan's Desk",
-          sid: "E123456",
-          locationId: "UID1111"
-        },
-        {
-          name: "Ma Hui's Desk",
-          sid: "D565531",
-          locationId: "UID2222"
-        },
-        {
-          name: "Breakout Area",
-          sid: null,
-          locationId: "UID3333"
-        },
-        {
-          name: "Meeting Room 1",
-          sid: null,
-          locationId: "UID4444"
-        }
-      ];
-
+     
       var nearbyInfo = [{ P1: "Near Room 1" }, { P4: "Near Breakout Area" }];
 
-      //--end
-      var repos = [
-        {
-          name: "He Xuan",
-          sid: "E123456",
-          locationId: "D1"
-        },
-        {
-          name: "Ma Hui",
-          sid: "D565531",
-          locationId: "R1"
-        },
-        {
-          name: "Rob Baskerville",
-          sid: "U123456",
-          locationId: "P24"
-        },
-        {
-          name: "Kavita",
-          sid: "N123456",
-          locationId: "P57"
-        }
-      ];
+      var repos = locationToIdMap;
       return repos.map(function(repo) {
-        repo.value = repo.name.toLowerCase();
+        if(repo.name) {
+          repo.value = repo.value + repo.name.toLowerCase();
+        }
+
+        if(repo.sid) {
+          repo.value = repo.value + repo.sid.toLowerCase();
+        }
+
+        if(repo.locationId) {
+          repo.value = repo.value + repo.locationId.toLowerCase();
+        }
+
         return repo;
       });
     }
