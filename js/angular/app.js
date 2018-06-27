@@ -46,6 +46,44 @@ app.controller("LandingController", [
     }
 
     function loadAll() {
+      //id --- internal reference ID
+      //locationId ---- Room ID for rooms and Table Number for Desks
+      var idToLocationId = {
+        D1: "UID1111",
+        R1: "UID2222",
+        R2: "UID3333",
+        D4: "UID4444"
+      }
+
+      var locationInfo = [
+        {
+          name: "He Xuan's Desk",
+          sid: "E123456",
+          locationId: "UID1111"
+        },
+        {
+          name: "Ma Hui's Desk",
+          sid: "D565531",
+          locationId: "UID2222"
+        },
+        {
+          name: "Breakout Area"
+          sid: null,
+          locationId: "UID3333"
+        }
+        {
+          name: "Meeting Room 1"
+          sid: null,
+          locationId: "UID4444"
+        }
+      ]
+
+      var nearbyInfo = [
+        P1: "Near Room 1",
+        P4: "Near "
+      ]
+
+//--end
       var repos = [
         {
           name: "He Xuan",
