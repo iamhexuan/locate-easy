@@ -1,6 +1,24 @@
-<div style="color:white">
-<div ng-repeat="l in landmarks">
-	<i class="fas fa-dot-circle"></i> {{l.description}}
-	<span class="muted">{{l.locationId}}</span>
-</div>
+<div class="landmark-list">
+	<div class="container-fluid">
+	<div ng-repeat="l in landmarks" class="pt-3 row">
+		<div class="col-2">
+			<span style="position:relative" ng-if="$first">
+				<i style="color:lightseagreen; font-size: 12px" class="fas fa-dot-circle"></i>
+				<img src="/image/dots_v_dark.svg">
+			</span>
+			<span style="position:relative" ng-if="$last">
+				<i style="color:mediumvioletred; font-size: 12px" class="far fa-dot-circle"></i>
+			</span>
+			<span style="position:relative" ng-if="!$last && !$first">
+				<i style="font-size: 12px" class="far fa-circle"></i>
+				<img src="/image/dots_v_dark.svg">
+			</span>
+		</div>
+
+		<div class="col-10" style="min-height:37px">
+			<div style="font-weight: bold">{{l.description}}</div>
+			<div style="font-size: 12px" class="text-muted">{{l.locationId}}</div>
+		</div>
+	</div>
+	</div>
 </div>

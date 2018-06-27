@@ -15,9 +15,11 @@ app.directive("elTime", function() {
 				if (!distance) {
 					reset();
 				} else {
-					$scope.slowWalkTime = Math.round(distance / slowWalkSpeed);
+					$scope.slowWalkTime = Math.round(
+						distance / slowWalkSpeed / 60
+					);
 					$scope.briskWalkTime = Math.round(
-						distance / briskWalkSpeed
+						distance / briskWalkSpeed / 60
 					);
 				}
 			});

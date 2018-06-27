@@ -1,10 +1,10 @@
-<div class="row p-1" style="color: lightgrey; background: grey">
-	<div class="col-6"><img style="height:15px" src="/image/man_slow_walk.svg"> 
+<div class="row p-1" style="color: lightgrey; background: #444444">
+	<div class="col-6"><img style="height:15px" src="/image/man_slow_walk.svg">
 		<span ng-if="slowWalkTime > 0">{{slowWalkTime}} min</span>
-		<span ng-if="slowWalkTime = 0"> less than 1 min</span>
+		<span ng-if="slowWalkTime == 0">&lt; 1 min</span>
 	</div>
 	<div class="col-6"><img style="height:15px" src="/image/man_brisk_walk.svg">
 		<span ng-if="briskWalkTime > 0">{{briskWalkTime}} min</span>
-		<span ng-if="briskWalkTime = 0"> less than 1 min</span>
+		<span ng-if="briskWalkTime == 0">&lt; 1 min</span>
 	</div>
 </div>

@@ -67,3 +67,21 @@ md-content {
   overflow: hidden; border-radius: 5px;
 }
 
+.landmark-list {
+	color: #2f2f30;
+    background: #e6e6e6;
+    margin: 0 -15px;
+    height: 100%;
+    font-size: 15px;
+}
+.landmark-list img {
+	height: 37px;
+    padding-left: 4px;
+    position: absolute;
+    top: 20px;
+    left: 0;
+}
+
+md-autocomplete .md-show-clear-button button {
+	margin-right: 15px;
+}
