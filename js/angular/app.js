@@ -16,10 +16,23 @@ app.controller("LandingController", [
     $scope.searchTextChange = searchTextChange;
 
     function findPath(start, end) {
-      var result = pathFinder.findPath(start, end);
+      var result = pathFinder.findPath(findIdByLocationId(start), findIdByLocationId(end));
       $scope.distance = result.distance;
       $scope.drawPath(result.path);
     }
+
+     function findIdByLocationId(locationId) { 
+      var value;
+     Object.keys(idToLocationId).forEach(function(key) {
+        if (idToLocationId.hasOwnProperty(key) && idToLocationId[key] === locationId) {
+           value = key.toString();
+        }
+      });
+        return value;
+    }
+    
+
+
 
     function querySearch(query) {
       var results = query
@@ -46,16 +59,6 @@ app.controller("LandingController", [
     }
 
     function loadAll() {
-      //id --- internal reference ID
-      //locationId ---- Room ID for rooms and Table Number for Desks
-      var idToLocationId = {
-        D1: "UID1111",
-        R1: "UID2222",
-        R2: "UID3333",
-        D4: "UID4444"
-      };
-
-     
       var nearbyInfo = [{ P1: "Near Room 1" }, { P4: "Near Breakout Area" }];
 
       var repos = locationToIdMap;
