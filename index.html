@@ -103,7 +103,6 @@
         </md-content>
       </div>
       </div>
-      <button type="button" class="btn btn-primary" style="float: right;" ng-click="findPath(selectedItem_start.locationId, selectedItem_end.locationId)">Find Path</button>
 
       <div ng-if="distance">
         <el-time distance="distance" ></el-time>
@@ -169,11 +168,14 @@
 
   <script src="js/angular/elLandmarkListDirective/elLandmarkList.js"></script>
 
+  <script src="js/pathfinder.js"></script>
+
+  <!-- data file -->
   <script src="js/dataLocationToId.js"></script>
 
   <script src="js/data.js"></script>
 
-  <script src="js/pathfinder.js"></script>
-  
+  <script src="js/dataLocationIdToPosition.js"></script>
+
 </body>
 </html>

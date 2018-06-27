@@ -20,9 +20,25 @@ app.controller("LandingController", [
     $scope.searchTextChange = searchTextChange;
 
     function findPath(start, end) {
-      var result = pathFinder.findPath(start, end);
+      var result = pathFinder.findPath(
+        findIdByLocationId(start),
+        findIdByLocationId(end)
+      );
       $scope.distance = result.distance;
       $scope.drawPath(result.path);
+    }
+
+    function findIdByLocationId(locationId) {
+      var value;
+      Object.keys(idToLocationId).forEach(function(key) {
+        if (
+          idToLocationId.hasOwnProperty(key) &&
+          idToLocationId[key] === locationId
+        ) {
+          value = key.toString();
+        }
+      });
+      return value;
     }
 
     function querySearch(query) {
@@ -38,7 +54,18 @@ app.controller("LandingController", [
     }
 
     function selectedItemChange(item) {
-      console.log("Item changed to " + JSON.stringify(item));
+      if (
+        $scope.selectedItem_end &&
+        $scope.selectedItem_start &&
+        $scope.selectedItem_start.locationId &&
+        $scope.selectedItem_end.locationId
+      ) {
+        findPath(
+          $scope.selectedItem_start.locationId,
+          $scope.selectedItem_end.locationId
+        );
+      }
+      // console.log("Item changed to " + JSON.stringify(item));
     }
 
     function createFilterFor(query) {
@@ -50,21 +77,12 @@ app.controller("LandingController", [
     }
 
     function loadAll() {
-      //id --- internal reference ID
-      //locationId ---- Room ID for rooms and Table Number for Desks
-      var idToLocationId = {
-        D1: "UID1111",
-        R1: "UID2222",
-        R2: "UID3333",
-        D4: "UID4444"
-      };
-
       var nearbyInfo = [{ P1: "Near Room 1" }, { P4: "Near Breakout Area" }];
 
       var repos = locationToIdMap;
       return repos.map(function(repo) {
         if (repo.name) {
-          repo.value = repo.value + repo.name.toLowerCase();
+          repo.value = repo.name.toLowerCase();
         }
 
         if (repo.sid) {
