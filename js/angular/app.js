@@ -4,10 +4,14 @@ app.controller("LandingController", [
   "$scope",
   function($scope) {
     $scope.landmarks = [
-      { description: "He Xuan's Desk", locationId: "UIN1234" },
-      { description: "Near Tina Wyer's Office", locationId: "UIN8888" },
-      { description: "Near Breakout Area", locationId: null },
-      { description: "Ma Hui's Desk", locationId: "UIN5684" }
+      { description: "He Xuan's Desk", locationId: "UIN1234", id: "D1" },
+      {
+        description: "Near Tina Wyer's Office",
+        locationId: "UIN8888",
+        id: "D2"
+      },
+      { description: "Near Breakout Area", locationId: null, id: "D3" },
+      { description: "Ma Hui's Desk", locationId: "UIN5684", id: "D4" }
     ];
     $scope.findPath = findPath;
     $scope.repos = loadAll();
@@ -55,20 +59,19 @@ app.controller("LandingController", [
         D4: "UID4444"
       };
 
-     
       var nearbyInfo = [{ P1: "Near Room 1" }, { P4: "Near Breakout Area" }];
 
       var repos = locationToIdMap;
       return repos.map(function(repo) {
-        if(repo.name) {
+        if (repo.name) {
           repo.value = repo.value + repo.name.toLowerCase();
         }
 
-        if(repo.sid) {
+        if (repo.sid) {
           repo.value = repo.value + repo.sid.toLowerCase();
         }
 
-        if(repo.locationId) {
+        if (repo.locationId) {
           repo.value = repo.value + repo.locationId.toLowerCase();
         }
 

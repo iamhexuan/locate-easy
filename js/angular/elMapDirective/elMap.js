@@ -18,6 +18,7 @@ app.directive("elMap", function() {
 					item.children["points"].children.forEach(function(child) {
 						$scope.points[child.name] = child;
 					});
+					$scope.$apply();
 				});
 			}
 
