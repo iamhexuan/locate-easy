@@ -67,22 +67,19 @@ app.controller("LandingController", [
           locationId: "UID2222"
         },
         {
-          name: "Breakout Area"
+          name: "Breakout Area",
           sid: null,
           locationId: "UID3333"
-        }
+        },
         {
-          name: "Meeting Room 1"
+          name: "Meeting Room 1",
           sid: null,
           locationId: "UID4444"
         }
       ];
 
-      var nearbyInfo = [
-        P1: "Near Room 1",
-        P4: "Near Breakout Area"
-      ];
-      
+      var nearbyInfo = [{ P1: "Near Room 1" }, { P4: "Near Breakout Area" }];
+
       //--end
       var repos = [
         {
