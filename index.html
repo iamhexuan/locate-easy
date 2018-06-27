@@ -58,7 +58,8 @@
             md-items="item in querySearch(searchText_start)"
             md-item-text="item.name"
             md-min-length="0"
-            placeholder="Enter the starting location"
+            placeholder="SID, Name, Desk Number or Room Number"
+            title="SID, Name, Desk Number or Room Number"
             md-menu-class="autocomplete-custom-template">
             <md-item-template>
               <span class="item-title"
@@ -87,7 +88,8 @@
             md-items="item in querySearch(searchText_end)"
             md-item-text="item.name"
             md-min-length="0"
-            placeholder="Locate your collegue"
+            placeholder="SID, Name, Desk Number or Room Number"
+            title="SID, Name, Desk Number or Room Number"
             md-menu-class="autocomplete-custom-template">
             <md-item-template>
               <span class="item-title"
@@ -101,6 +103,7 @@
         </md-content>
       </div>
       </div>
+      <button ng-click="findPath(selectedItem_start.locationId, selectedItem_end.locationId)">Find Path</button>
 
       <div ng-if="distance">
         <el-time distance="distance" ></el-time>
@@ -125,7 +128,6 @@
         </button>
       </nav>
 
-      <button ng-click="findPath(selectedItem_start.locationId, selectedItem_end.locationId)">Find Path</button>
       <canvas id="myCanvas"
         resize
         el-map

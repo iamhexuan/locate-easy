@@ -63,3 +63,7 @@ md-autocomplete#custom-template {
   line-height: 2;
 }
 
+md-content {
+  overflow: hidden; border-radius: 5px;
+}
+
