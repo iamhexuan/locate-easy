@@ -1,5 +1,6 @@
-app.directive("ecTime", function() {
-	const slowWalkSpeed = 1;
+app.directive("elTime", function() {
+	//speed in meter per second
+	const slowWalkSpeed = 1.4;
 	const briskWalkSpeed = 2;
 	return {
 		restrict: "E",
@@ -14,8 +15,10 @@ app.directive("ecTime", function() {
 				if (!distance) {
 					reset();
 				} else {
-					$scope.slowWalkTime = distance / slowWalkSpeed;
-					$scope.briskWalkTime = distance / briskWalkSpeed;
+					$scope.slowWalkTime = Math.round(distance / slowWalkSpeed);
+					$scope.briskWalkTime = Math.round(
+						distance / briskWalkSpeed
+					);
 				}
 			});
 
@@ -26,4 +29,3 @@ app.directive("ecTime", function() {
 		}
 	};
 });
-
