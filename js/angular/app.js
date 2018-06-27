@@ -3,16 +3,6 @@ var app = angular.module("locateEasy", ["ngMaterial", "ngMessages"]);
 app.controller("LandingController", [
   "$scope",
   function($scope) {
-    $scope.landmarks = [
-      { description: "He Xuan's Desk", locationId: "UIN1234", id: "D1" },
-      {
-        description: "Near Tina Wyer's Office",
-        locationId: "UIN8888",
-        id: "D2"
-      },
-      { description: "Near Breakout Area", locationId: null, id: "D3" },
-      { description: "Ma Hui's Desk", locationId: "UIN5684", id: "D4" }
-    ];
     $scope.findPath = findPath;
     $scope.repos = loadAll();
     $scope.querySearch = querySearch;
@@ -21,25 +11,75 @@ app.controller("LandingController", [
 
     function findPath(start, end) {
       var result = pathFinder.findPath(
-        findIdByLocationId(start),
-        findIdByLocationId(end)
+        doLookUp(idToLocationId, "locationId", "id", start),
+        doLookUp(idToLocationId, "locationId", "id", end)
       );
       $scope.distance = result.distance;
       $scope.drawPath(result.path);
+      $scope.landmarks = findLandmarks(result.path);
     }
 
-    function findIdByLocationId(locationId) {
-      var value;
-      Object.keys(idToLocationId).forEach(function(key) {
-        if (
-          idToLocationId.hasOwnProperty(key) &&
-          idToLocationId[key] === locationId
-        ) {
-          value = key.toString();
+    function doLookUp(jsonTable, lookUpField, returnField, lookUpValue) {
+      for (var i = 0; i < jsonTable.length; i++) {
+        if (jsonTable[i][lookUpField] == lookUpValue) {
+          return jsonTable[i][returnField];
         }
-      });
-      return value;
+      }
+      return null;
     }
+
+    function findLandmarks(mapPath) {
+      var landMarks = {
+        items: []
+      };
+
+      var tmpID = doLookUp(idToLocationId, "id", "locationId", mapPath[0]);
+
+      landMarks.items.push({
+        description: doLookUp(locationInfo, "locationId", "name", tmpID),
+        locationId: doLookUp(locationInfo, "locationId", "locationId", tmpID),
+        id: mapPath[0]
+      });
+      //Paths
+      for (i = 1; i < mapPath.length - 1; i++) {
+        pathAttribute = doLookUp(nearbyInfo, "id", "description", mapPath[i]);
+        if (pathAttribute != null) {
+          landMarks.items.push({
+            description: pathAttribute,
+            locationId: null,
+            id: mapPath[i]
+          });
+        }
+      }
+      //End
+      tmpID = doLookUp(
+        idToLocationId,
+        "id",
+        "locationId",
+        mapPath[mapPath.length - 1]
+      );
+
+      landMarks.items.push({
+        description: doLookUp(locationInfo, "locationId", "name", tmpID),
+        locationId: doLookUp(locationInfo, "locationId", "locationId", tmpID),
+        id: mapPath[mapPath.length - 1]
+      });
+
+      return landMarks.items;
+    }
+
+    // function findIdByLocationId(locationId) {
+    //   var value;
+    //   Object.keys(idToLocationId).forEach(function(key) {
+    //     if (
+    //       idToLocationId.hasOwnProperty(key) &&
+    //       idToLocationId[key] === locationId
+    //     ) {
+    //       value = key.toString();
+    //     }
+    //   });
+    //   return value;
+    // }
 
     function querySearch(query) {
       var results = query
@@ -77,9 +117,7 @@ app.controller("LandingController", [
     }
 
     function loadAll() {
-      var nearbyInfo = [{ P1: "Near Room 1" }, { P4: "Near Breakout Area" }];
-
-      var repos = locationToIdMap;
+      var repos = locationInfo;
       return repos.map(function(repo) {
         if (repo.name) {
           repo.value = repo.name.toLowerCase();

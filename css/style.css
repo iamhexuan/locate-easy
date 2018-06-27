@@ -85,3 +85,15 @@ md-content {
 md-autocomplete .md-show-clear-button button {
 	margin-right: 15px;
 }
+
+.color-green {
+	color:lightseagreen;
+}
+
+.color-red {
+	color:indianred;
+}
+
+.color-blue {
+	color: cornflowerblue；
+}

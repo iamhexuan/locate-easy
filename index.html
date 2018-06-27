@@ -104,10 +104,8 @@
       </div>
       </div>
 
-      <div ng-if="distance">
-        <el-time distance="distance" ></el-time>
-        <el-landmark-list landmarks="landmarks" ></el-landmark-list>
-      </div>
+      <el-time ng-if="distance" distance="distance" ></el-time>
+      <el-landmark-list ng-if="distance" landmarks="landmarks" ></el-landmark-list>
       
     </nav>
 
@@ -171,11 +169,13 @@
   <script src="js/pathfinder.js"></script>
 
   <!-- data file -->
-  <script src="js/dataLocationToId.js"></script>
+  <script src="js/dataIdToLocationId.js"></script>
+  
+  <script src="js/dataNearbyInfo.js"></script>
 
   <script src="js/data.js"></script>
 
-  <script src="js/dataLocationIdToPosition.js"></script>
+  <script src="js/dataLocationInfo.js"></script>
 
 </body>
 </html>
